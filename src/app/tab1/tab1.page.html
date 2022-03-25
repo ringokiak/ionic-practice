@@ -1,17 +1,40 @@
+<!--
+ * @Author: r1ngo
+ * @Date: 2022-03-25 16:17:27
+ * @LastEditors: r1ngo
+ * @LastEditTime: 2022-03-25 17:41:28
+ * @Description: ez pz lemon squezzy
+-->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>伪信</ion-title>
+    <ion-icon
+      class="head_icon"
+      color="medium"
+      slot="end"
+      name="search-outline"
+    ></ion-icon>
+    <ion-icon
+      class="head_icon"
+      color="medium"
+      slot="end"
+      name="add-circle-outline"
+    ></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item class="li" *ngFor="let item of [1,2]">
+    <ion-avatar slot="start" class="avatar">
+      <img src="../../assets/shapes.svg" />
+    </ion-avatar>
+    <ion-label class="label">
+      <!-- <ion-icon name="volume-mute-outline"></ion-icon> -->
+      <div class="title">
+        <h2>Ringo</h2>
+        <p>{{ Date.getTime() }}</p>
+      </div>
+      <p class="msg">asdfgiohaidofg</p>
+    </ion-label>
+  </ion-item>
 </ion-content>
