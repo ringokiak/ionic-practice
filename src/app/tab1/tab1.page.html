@@ -2,7 +2,7 @@
  * @Author: r1ngo
  * @Date: 2022-03-25 16:17:27
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-25 18:07:47
+ * @LastEditTime: 2022-03-26 11:02:22
  * @Description: ez pz lemon squezzy
 -->
 <ion-header [translucent]="true">
@@ -24,17 +24,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item class="li" *ngFor="let item of [1,2]">
-    <ion-avatar slot="start" class="avatar">
-      <img src="../../assets/shapes.svg" />
-    </ion-avatar>
-    <ion-label class="label">
-      <!-- <ion-icon name="volume-mute-outline"></ion-icon> -->
-      <div class="title">
-        <h2>Ringo</h2>
-        <p>dfgfg</p>
-      </div>
-      <p class="msg">asdfgiohaidofg</p>
-    </ion-label>
-  </ion-item>
+  <ng-container *ngIf="service.chatList">
+    <ion-item class="li" *ngFor="let item of service.chatList">
+      <ion-avatar slot="start" class="avatar">
+        <img [src]="item.avatar" />
+      </ion-avatar>
+      <ion-label class="label">
+        <!-- <ion-icon name="volume-mute-outline"></ion-icon> -->
+        <div class="title">
+          <h2>{{ item.name }}</h2>
+          <p>{{ item.time | date: 'HH:mm:ss' }}</p>
+        </div>
+        <p class="msg">{{ item.content }}</p>
+      </ion-label>
+    </ion-item>
+  </ng-container>
 </ion-content>

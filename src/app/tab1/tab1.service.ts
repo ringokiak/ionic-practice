@@ -2,7 +2,7 @@
  * @Author: r1ngo
  * @Date: 2022-03-25 17:42:22
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-25 18:09:14
+ * @LastEditTime: 2022-03-26 10:51:41
  * @Description: ez pz lemon squezzy
  */
 import { Injectable } from '@angular/core';
@@ -20,10 +20,16 @@ export class Tab1Service {
         page: 1,
         size: 10,
       })
-      .subscribe((res) => {
-        console.log(res);
+      .subscribe((res: Result) => {
+        this.chatList = res.data;
       });
   }
+}
+
+interface Result {
+  code: number;
+  data: Chat[];
+  message: string;
 }
 
 interface Chat {
