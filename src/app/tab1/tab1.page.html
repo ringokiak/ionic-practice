@@ -2,7 +2,7 @@
  * @Author: r1ngo
  * @Date: 2022-03-25 16:17:27
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-26 11:02:22
+ * @LastEditTime: 2022-03-26 11:19:00
  * @Description: ez pz lemon squezzy
 -->
 <ion-header [translucent]="true">
@@ -25,7 +25,11 @@
 
 <ion-content [fullscreen]="true">
   <ng-container *ngIf="service.chatList">
-    <ion-item class="li" *ngFor="let item of service.chatList">
+    <ion-item
+      class="li"
+      *ngFor="let item of service.chatList; let i = index"
+      [lines]="i >= service.chatList.length - 1 ? 'none' : 'inset'"
+    >
       <ion-avatar slot="start" class="avatar">
         <img [src]="item.avatar" />
       </ion-avatar>
