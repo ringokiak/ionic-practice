@@ -2,7 +2,7 @@
  * @Author: r1ngo
  * @Date: 2022-03-25 17:42:22
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-26 10:51:41
+ * @LastEditTime: 2022-03-28 16:39:58
  * @Description: ez pz lemon squezzy
  */
 import { Injectable } from '@angular/core';
@@ -16,10 +16,7 @@ export class Tab1Service {
   chatList: Chat[];
   getList(): void {
     this.http
-      .post('http://127.0.0.1:4523/mock/762788/messageList', {
-        page: 1,
-        size: 10,
-      })
+      .get('http://127.0.0.1:4523/mock/762788/messageList')
       .subscribe((res: Result) => {
         this.chatList = res.data;
       });

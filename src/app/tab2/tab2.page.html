@@ -1,17 +1,56 @@
+<!--
+ * @Author: r1ngo
+ * @Date: 2022-03-25 16:17:27
+ * @LastEditors: r1ngo
+ * @LastEditTime: 2022-03-28 18:08:46
+ * @Description: ez pz lemon squezzy
+-->
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+  <ion-toolbar></ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list>
+    <ion-item class="li" mode="ios">
+      <div slot="start" class="img color1">
+        <ion-icon name="person-add"></ion-icon>
+      </div>
+      <ion-label>New Friends</ion-label>
+    </ion-item>
+    <ion-item class="li" mode="ios">
+      <div slot="start" class="img color2">
+        <ion-icon name="people"></ion-icon>
+      </div>
+      <ion-label>Group Chat</ion-label>
+    </ion-item>
+    <ion-item class="li" mode="ios">
+      <div slot="start" class="img color3">
+        <ion-icon name="pricetag"></ion-icon>
+      </div>
+      <ion-label>Tags</ion-label>
+    </ion-item>
+    <ion-item class="li" mode="ios" lines="none">
+      <div slot="start" class="img color4">
+        <ion-icon name="accessibility"></ion-icon>
+      </div>
+      <ion-label>Official Accounts</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-item-group mode="ios">
+    <ng-container *ngFor="let cap of service.contactsList">
+      <ion-item-divider>
+        <ion-label class="divider">{{ cap.capital | uppercase }}</ion-label>
+      </ion-item-divider>
+      <ion-item
+        *ngFor="let item of cap.list;let i = index;"
+        [lines]="i >= cap.list.length - 1 ? 'none' : 'inset'"
+        class="con"
+      >
+        <ion-avatar slot="start" class="avatar">
+          <img [src]="item.avatar" />
+        </ion-avatar>
+        <ion-label>{{ item.name }}</ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-item-group>
 </ion-content>

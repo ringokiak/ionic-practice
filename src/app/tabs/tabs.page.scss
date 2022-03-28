@@ -1,1 +1,13 @@
-
+ion-tab-bar {
+  padding: 4px 0;
+}
+.head_icon {
+  font-size: 24px;
+  padding: 4px;
+}
+.popover_content {
+  ion-item {
+    --background: #333;
+    color: #fff;
+  }
+}

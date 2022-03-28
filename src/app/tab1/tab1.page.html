@@ -2,31 +2,18 @@
  * @Author: r1ngo
  * @Date: 2022-03-25 16:17:27
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-26 11:19:00
+ * @LastEditTime: 2022-03-28 16:18:01
  * @Description: ez pz lemon squezzy
 -->
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>伪信</ion-title>
-    <ion-icon
-      class="head_icon"
-      color="medium"
-      slot="end"
-      name="search-outline"
-    ></ion-icon>
-    <ion-icon
-      class="head_icon"
-      color="medium"
-      slot="end"
-      name="add-circle-outline"
-    ></ion-icon>
-  </ion-toolbar>
+<ion-header>
+  <ion-toolbar> </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ng-container *ngIf="service.chatList">
+  <ion-list *ngIf="service.chatList">
     <ion-item
       class="li"
+      mode="ios"
       *ngFor="let item of service.chatList; let i = index"
       [lines]="i >= service.chatList.length - 1 ? 'none' : 'inset'"
     >
@@ -34,13 +21,22 @@
         <img [src]="item.avatar" />
       </ion-avatar>
       <ion-label class="label">
-        <!-- <ion-icon name="volume-mute-outline"></ion-icon> -->
         <div class="title">
           <h2>{{ item.name }}</h2>
-          <p>{{ item.time | date: 'HH:mm:ss' }}</p>
+          <ion-label class="time" color="medium"
+            >{{ item.time | date: 'HH:mm:ss' }}</ion-label
+          >
         </div>
-        <p class="msg">{{ item.content }}</p>
+        <div class="content">
+          <ion-label color="medium">{{ item.content }}</ion-label>
+          <ion-icon
+            class="banned"
+            name="notifications-off-outline"
+            color="medium"
+            *ngIf="item.banned"
+          ></ion-icon>
+        </div>
       </ion-label>
     </ion-item>
-  </ng-container>
+  </ion-list>
 </ion-content>
