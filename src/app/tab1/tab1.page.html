@@ -2,7 +2,7 @@
  * @Author: r1ngo
  * @Date: 2022-03-25 16:17:27
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-28 16:18:01
+ * @LastEditTime: 2022-03-29 10:12:09
  * @Description: ez pz lemon squezzy
 -->
 <ion-header>
@@ -16,6 +16,7 @@
       mode="ios"
       *ngFor="let item of service.chatList; let i = index"
       [lines]="i >= service.chatList.length - 1 ? 'none' : 'inset'"
+      (click)="toChat(item)"
     >
       <ion-avatar slot="start" class="avatar">
         <img [src]="item.avatar" />

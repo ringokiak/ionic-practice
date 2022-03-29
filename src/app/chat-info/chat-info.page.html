@@ -1,0 +1,48 @@
+<!--
+ * @Author: r1ngo
+ * @Date: 2022-03-29 14:16:40
+ * @LastEditors: r1ngo
+ * @LastEditTime: 2022-03-29 14:46:51
+ * @Description: ez pz lemon squezzy
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chat Info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main">
+  <ion-item lines="none" class="li_head">
+    <ion-avatar slot="start" class="avatar">
+      <img [src]="friend.avatar" />
+    </ion-avatar>
+    <ion-label>{{ friend.name }}</ion-label>
+  </ion-item>
+  <ion-item lines="none" class="mt8" button detail>
+    <ion-label>Search Chat History</ion-label>
+  </ion-item>
+  <ion-item class="mt8">
+    <ion-label>Mute Notifications</ion-label>
+    <ion-toggle></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sticky on Top</ion-label>
+    <ion-toggle></ion-toggle>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Alert</ion-label>
+    <ion-toggle checked></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="mt8" button detail>
+    <ion-label>Background</ion-label>
+  </ion-item>
+  <ion-item lines="none" class="mt8" button detail>
+    <ion-label>Clear Chat History</ion-label>
+  </ion-item>
+  <ion-item lines="none" class="mt8" button detail>
+    <ion-label>Report</ion-label>
+  </ion-item>
+</ion-content>

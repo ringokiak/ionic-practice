@@ -2,25 +2,20 @@
  * @Author: r1ngo
  * @Date: 2022-03-25 16:17:27
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-28 15:59:04
+ * @LastEditTime: 2022-03-29 14:49:38
  * @Description: ez pz lemon squezzy
 -->
-<ion-header>
+<ion-header *ngIf="tabNow != 'tab4'">
   <ion-toolbar>
-    <ion-title>BroChat</ion-title>
-    <ion-icon
-      class="head_icon"
-      color="medium"
-      slot="end"
-      name="search-outline"
-    ></ion-icon>
-    <ion-icon
-      id="trigger-button"
-      class="head_icon"
-      color="medium"
-      slot="end"
-      name="add-circle-outline"
-    ></ion-icon>
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="medium" class="head_btn">
+        <ion-icon class="head_icon" name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="medium" id="trigger-button" class="head_btn">
+        <ion-icon class="head_icon" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-popover trigger="trigger-button" dismissOnSelect>

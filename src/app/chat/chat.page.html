@@ -1,0 +1,100 @@
+<!--
+ * @Author: r1ngo
+ * @Date: 2022-03-29 09:58:26
+ * @LastEditors: r1ngo
+ * @LastEditTime: 2022-03-29 14:29:17
+ * @Description: ez pz lemon squezzy
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ chatInfo.name }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="toInfo()">
+        <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-grid fixed>
+      <p class="timeline">{{ chatInfo.time | date: 'HH:mm' }}</p>
+      <ion-row class="line">
+        <ion-col size="2">
+          <ion-avatar class="avatar">
+            <img [src]="chatInfo.avatar" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="8" class="col_right">
+          <ion-card color="light" class="card">
+            <ion-card-content class="content"
+              >{{ chatInfo.content }}</ion-card-content
+            >
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ng-container *ngFor="let item of messageList">
+        <p class="timeline">{{ item.time | date: 'HH:mm' }}</p>
+        <ion-row class="line">
+          <ion-col size="2"></ion-col>
+          <ion-col size="8" class="col_right">
+            <ion-card color="light" class="card" color="primary">
+              <ion-card-content class="content"
+                >{{ item.content }}</ion-card-content
+              >
+            </ion-card>
+          </ion-col>
+          <ion-col size="2">
+            <ion-avatar class="avatar">
+              <img [src]="chatInfo.avatar" />
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </ion-grid>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer">
+    <ion-label slot="start" class="speak">
+      <ion-icon
+        name="wifi"
+        class="speak_icon"
+        *ngIf="speak; else messageMode"
+        (click)="speak = false"
+      >
+      </ion-icon>
+      <ng-template #messageMode>
+        <ion-icon name="keypad" class="speak_icon" (click)="speak = true">
+        </ion-icon>
+      </ng-template>
+    </ion-label>
+    <ion-input
+      type="text"
+      placeholder="Say Something..."
+      color="dark"
+      class="inp"
+      [(ngModel)]="message"
+      *ngIf="speak; else messageButton"
+      enterkeyhint="send"
+      inputmode="text"
+    ></ion-input>
+    <ng-template #messageButton>
+      <ion-button class="btn" expand="block">Hold To Talk</ion-button>
+    </ng-template>
+    <ion-button
+      *ngIf="speak"
+      slot="end"
+      (click)="send()"
+      class="send"
+      debounce="300"
+      [disabled]="!message"
+      >Send</ion-button
+    >
+  </ion-toolbar>
+</ion-footer>

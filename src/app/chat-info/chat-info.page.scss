@@ -1,0 +1,15 @@
+.main {
+  --background: #f1f1f1;
+  .li_head {
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    .avatar {
+      width: 52px;
+      height: 52px;
+      --border-radius: 4px;
+    }
+  }
+  .mt8 {
+    margin-top: 8px;
+  }
+}

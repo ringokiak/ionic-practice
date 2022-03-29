@@ -1,10 +1,16 @@
+/*
+ * @Author: r1ngo
+ * @Date: 2022-03-25 16:17:27
+ * @LastEditors: r1ngo
+ * @LastEditTime: 2022-03-29 09:59:44
+ * @Description: ez pz lemon squezzy
+ */
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab3Page } from './tab3.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab3PageRoutingModule } from './tab3-routing.module';
 
@@ -13,7 +19,6 @@ import { Tab3PageRoutingModule } from './tab3-routing.module';
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
   ],
