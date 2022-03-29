@@ -2,15 +2,15 @@
  * @Author: r1ngo
  * @Date: 2022-03-29 09:58:26
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-29 14:29:17
+ * @LastEditTime: 2022-03-29 18:22:36
  * @Description: ez pz lemon squezzy
 -->
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="secondary">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ chatInfo.name }}</ion-title>
+    <ion-title *ngIf="chatInfo">{{ chatInfo.name || 'BroChat' }}</ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="toInfo()">
         <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
@@ -19,7 +19,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="chatInfo">
   <ion-list>
     <ion-grid fixed>
       <p class="timeline">{{ chatInfo.time | date: 'HH:mm' }}</p>

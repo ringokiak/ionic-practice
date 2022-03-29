@@ -2,9 +2,10 @@
  * @Author: r1ngo
  * @Date: 2022-03-29 09:58:26
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-29 14:31:25
+ * @LastEditTime: 2022-03-29 18:20:04
  * @Description: ez pz lemon squezzy
  */
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -18,7 +19,11 @@ export class ChatPage implements OnInit {
   speak: boolean = true;
   message: string = null;
   messageList: Message[] = [];
-  constructor(public route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location
+  ) {}
 
   send(): void {
     this.messageList.push({
@@ -36,8 +41,12 @@ export class ChatPage implements OnInit {
     this.router.navigate(['chat-info', obj]);
   }
 
+  back(): void {
+    this.location.back();
+  }
+
   ngOnInit() {
-    if (this.route.snapshot.queryParams) {
+    if (this.route.snapshot.queryParams.chatInfo) {
       this.chatInfo = JSON.parse(this.route.snapshot.queryParams.chatInfo);
     }
   }
