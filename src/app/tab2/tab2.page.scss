@@ -47,3 +47,13 @@
     height: 52px;
   }
 }
+.cap_list {
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .cap {
+    font-size: 14px;
+    padding: 2px;
+  }
+}

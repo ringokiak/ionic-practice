@@ -2,7 +2,7 @@
  * @Author: r1ngo
  * @Date: 2022-03-29 15:25:27
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-29 18:22:07
+ * @LastEditTime: 2022-03-30 15:37:59
  * @Description: ez pz lemon squezzy
 -->
 <ion-header>
@@ -23,4 +23,87 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingText="Pull to refresh"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let item of service.momentList" lines="full" class="li">
+      <ion-avatar slot="start" class="avatar">
+        <img [src]="item.avatar" />
+      </ion-avatar>
+      <ion-text color="primary" class="info">
+        <h4 class="name">{{ item.name }}</h4>
+        <p class="content">{{ item.content }}</p>
+        <ng-container *ngIf="item.pics.length <= 1;else moreThan">
+          <ion-grid fixed class="grid" *ngIf="item.pics.length">
+            <ion-row>
+              <ion-col size="12">
+                <ion-thumbnail class="pic">
+                  <img *ngFor="let pic of item.pics" [src]="pic" />
+                </ion-thumbnail>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ng-container>
+        <ng-template #moreThan>
+          <ng-container *ngIf="item.pics.length == 4; else notFour">
+            <ion-grid fixed class="grid">
+              <ion-row>
+                <ion-col size="4">
+                  <ion-thumbnail class="pic">
+                    <img [src]="item.pics[0]" />
+                  </ion-thumbnail>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-thumbnail class="pic">
+                    <img [src]="item.pics[1]" />
+                  </ion-thumbnail>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="4">
+                  <ion-thumbnail class="pic">
+                    <img [src]="item.pics[2]" />
+                  </ion-thumbnail>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-thumbnail class="pic">
+                    <img [src]="item.pics[3]" />
+                  </ion-thumbnail>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ng-container>
+          <ng-template #notFour>
+            <ion-grid fixed class="grid">
+              <ion-row>
+                <ion-col size="4" *ngFor="let pic of item.pics">
+                  <ion-thumbnail class="pic">
+                    <img [src]="pic" />
+                  </ion-thumbnail>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ng-template>
+        </ng-template>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll
+    threshold="100px"
+    (ionInfinite)="loadList($event)"
+    [disabled]="loadingDisabled"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."
+      class="loading"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

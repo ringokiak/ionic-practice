@@ -2,7 +2,7 @@
  * @Author: r1ngo
  * @Date: 2022-03-25 16:17:27
  * @LastEditors: r1ngo
- * @LastEditTime: 2022-03-28 18:08:46
+ * @LastEditTime: 2022-03-30 10:20:59
  * @Description: ez pz lemon squezzy
 -->
 <ion-header [translucent]="true">
@@ -38,7 +38,7 @@
   </ion-list>
   <ion-item-group mode="ios">
     <ng-container *ngFor="let cap of service.contactsList">
-      <ion-item-divider>
+      <ion-item-divider [id]="cap.capital">
         <ion-label class="divider">{{ cap.capital | uppercase }}</ion-label>
       </ion-item-divider>
       <ion-item
@@ -53,4 +53,10 @@
       </ion-item>
     </ng-container>
   </ion-item-group>
+
+  <ion-fab vertical="center" horizontal="end" slot="fixed" class="cap_list">
+    <ng-container *ngFor="let item of service.capitalList">
+      <ion-label class="cap" (click)="hrefTo(item)">{{ item }}</ion-label>
+    </ng-container>
+  </ion-fab>
 </ion-content>
